@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController  ,UITextFieldDelegate {
+    weak var addTaskDelegate:AddTaskDelegate?
     @IBOutlet weak var descOutlet: UITextField!
 
     @IBOutlet weak var dueOutlet: UITextField!
@@ -17,7 +18,15 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Do any additional setup after loading the view.
+        descOutlet.delegate = self
+        dueOutlet.delegate = self
+        descOutlet.delegate=self
+
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     @IBAction func createTask(_ sender: Any) {
         if titleOutlet.text != "" && descOutlet.text != "" && dueOutlet.text!==""
@@ -25,24 +34,29 @@ class TaskViewController: UIViewController {
             let title = titleOutlet.text!
             let desc = descOutlet.text!
             let due=dueOutlet.text!
-            let newTask = Task(name: title, description: desc,duedate:due,)
+            let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
             
-            let _ = superHeroDelegate!.addSuperHero(newHero: hero)
-            navigationController?.popViewController(animated: true)
+            let newTask = Task(name: title, description: desc,duedate:due,completed:status)
+            
+
             return
         }
         
         var errorMsg = "Please ensure all fields are filled:\n"
         
-        if nameTextField.text == "" {
-            errorMsg += "- Must provide a name\n"
+        if titleOutlet.text == "" {
+            errorMsg += "- Must provide a title\n"
         }
-        if abilitiesTextField.text == "" {
-            errorMsg += "- Must provide abilities"
+        if descOutlet.text == "" {
+            errorMsg += "- Must provide a description\n"
+        }
+        if dueOutlet.text == "" {
+            errorMsg += "- Must provide a due date"
         }
         
         displayMessage(title: "Not all fields filled", message: errorMsg)
     }
+
     
     func displayMessage(title: String, message: String) {
         // Setup an alert to show user details about the Person

@@ -22,6 +22,9 @@ class Task: NSObject {
         
         
     }
-    
+    func stringSummary() -> String{
+        return "This Task involves the creation of the add task screen, with its view controllers"
+    }
     
 }
+

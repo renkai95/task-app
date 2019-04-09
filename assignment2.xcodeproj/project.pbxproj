@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50A55291225CB477008B9BDF /* AddTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A55290225CB477008B9BDF /* AddTaskDelegate.swift */; };
 		50E2FB82225B417D00E8055F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2FB81225B417D00E8055F /* AppDelegate.swift */; };
 		50E2FB84225B417D00E8055F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2FB83225B417D00E8055F /* ViewController.swift */; };
 		50E2FB87225B417D00E8055F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E2FB85225B417D00E8055F /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50A55290225CB477008B9BDF /* AddTaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDelegate.swift; sourceTree = "<group>"; };
 		50E2FB7E225B417D00E8055F /* assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E2FB81225B417D00E8055F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50E2FB83225B417D00E8055F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				50E2FB81225B417D00E8055F /* AppDelegate.swift */,
 				50E2FB83225B417D00E8055F /* ViewController.swift */,
+				50A55290225CB477008B9BDF /* AddTaskDelegate.swift */,
 				50E2FB96225B42E800E8055F /* Task.swift */,
 				50E2FB85225B417D00E8055F /* Main.storyboard */,
 				50ED0BA9225B8DA200224E92 /* TaskViewController.swift */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E2FB97225B42E800E8055F /* Task.swift in Sources */,
+				50A55291225CB477008B9BDF /* AddTaskDelegate.swift in Sources */,
 				50E2FB84225B417D00E8055F /* ViewController.swift in Sources */,
 				50ED0BAA225B8DA200224E92 /* TaskViewController.swift in Sources */,
 				50E2FB82225B417D00E8055F /* AppDelegate.swift in Sources */,
