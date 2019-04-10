@@ -11,10 +11,10 @@ import UIKit
 class Task: NSObject {
     var name: String
     var desc: String
-    var duedate: String
+    var duedate: Date
     var completed: String
     
-    init(name: String, description: String, duedate: String, completed: String) {
+    init(name: String, description: String, duedate: Date, completed: String) {
         self.name = name
         self.desc = description
         self.duedate = duedate

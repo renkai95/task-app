@@ -11,8 +11,9 @@ import UIKit
 class TaskViewController: UIViewController  ,UITextFieldDelegate {
     weak var addTaskDelegate:AddTaskDelegate?
     @IBOutlet weak var descOutlet: UITextField!
-
-    @IBOutlet weak var dueOutlet: UITextField!
+    @IBOutlet weak var dueOutlet: UIDatePicker!
+    
+  
     @IBOutlet weak var segOutlet: UISegmentedControl!
     @IBOutlet weak var titleOutlet: UITextField!
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
 
         //Do any additional setup after loading the view.
         descOutlet.delegate = self
-        dueOutlet.delegate = self
+        
         descOutlet.delegate=self
 
     }
@@ -29,11 +30,11 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         return true
     }
     @IBAction func createTask(_ sender: Any) {
-        if titleOutlet.text != "" && descOutlet.text != "" && dueOutlet.text!==""
+        if titleOutlet.text != "" && descOutlet.text != ""
         {
             let title = titleOutlet.text!
             let desc = descOutlet.text!
-            let due=dueOutlet.text!
+            let due=dueOutlet.date
             let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
             
             let newTask = Task(name: title, description: desc,duedate:due,completed:status)
@@ -50,9 +51,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         if descOutlet.text == "" {
             errorMsg += "- Must provide a description\n"
         }
-        if dueOutlet.text == "" {
-            errorMsg += "- Must provide a due date"
-        }
+  
         
         displayMessage(title: "Not all fields filled", message: errorMsg)
     }
