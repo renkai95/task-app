@@ -28,7 +28,8 @@
                                 <rect key="frame" x="16" y="551.5" width="343" height="30"/>
                                 <state key="normal" title="Save Task"/>
                                 <connections>
-                                    <action selector="createTask:" destination="PQG-cO-kN1" eventType="touchUpInside" id="oGU-F5-Ok0"/>
+                                    <action selector="createTask:" destination="PQG-cO-kN1" eventType="touchUpInside" id="9dJ-n0-wGN"/>
+                                    <segue destination="7NN-rs-Noc" kind="show" identifier="createNewTaskSegue" id="qd3-rh-bMw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCm-yD-6GF">
@@ -258,6 +259,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlc-5H-BjN">
                                             <rect key="frame" x="16" y="0.0" width="38" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" label="title"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -284,6 +286,14 @@
                                     <outlet property="titleOutlet" destination="wlc-5H-BjN" id="NGI-Dn-F7j"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oTU-56-dqk">
+                                <rect key="frame" x="0.0" y="178.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTU-56-dqk" id="hbD-cA-GBL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="7NN-rs-Noc" id="12m-It-nxF"/>
@@ -291,7 +301,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Task List" id="28E-PV-whn">
+                    <navigationItem key="navigationItem" title="taskCount" id="28E-PV-whn">
                         <barButtonItem key="rightBarButtonItem" title="Completed Tasks" id="Mt3-di-iKb">
                             <connections>
                                 <segue destination="yOu-Mh-Fga" kind="show" id="1bw-kN-Ol5"/>
@@ -374,6 +384,42 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="67" id="P1B-5n-kab" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="121.5" width="375" height="67"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1B-5n-kab" id="ISX-bJ-bU2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cav-JD-brP">
+                                            <rect key="frame" x="16" y="0.0" width="38" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5y-Ea-mrv">
+                                            <rect key="frame" x="16" y="22" width="93" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-LA-Nf5">
+                                            <rect key="frame" x="16" y="45" width="76" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descOutlet" destination="Z5y-Ea-mrv" id="ffA-Nm-TMz"/>
+                                    <outlet property="dueOutlet" destination="SVf-LA-Nf5" id="tVo-VF-hIQ"/>
+                                    <outlet property="titleOutlet" destination="cav-JD-brP" id="AZe-b8-4qF"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="yOu-Mh-Fga" id="RAa-HA-KWg"/>
@@ -387,7 +433,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="qd3-rh-bMw"/>
         <segue reference="0SM-JI-rqw"/>
-        <segue reference="QMw-Cd-v6z"/>
+        <segue reference="LHa-8Z-CkI"/>
     </inferredMetricsTieBreakers>
 </document>

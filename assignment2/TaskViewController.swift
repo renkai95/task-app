@@ -29,6 +29,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+
     @IBAction func createTask(_ sender: Any) {
         if titleOutlet.text != "" && descOutlet.text != ""
         {
@@ -38,8 +39,9 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
             
             let newTask = Task(name: title, description: desc,duedate:due,completed:status)
-            
-
+            let _ = addTaskDelegate?.addTask(newTask:newTask)
+            displayMessage(title:"Success!",message:"Task inserted successfully")
+            navigationController?.popViewController(animated: true)
             return
         }
         
