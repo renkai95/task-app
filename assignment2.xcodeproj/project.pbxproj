@@ -16,6 +16,8 @@
 		50E2FB8F225B418000E8055F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E2FB8D225B418000E8055F /* LaunchScreen.storyboard */; };
 		50E2FB97225B42E800E8055F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2FB96225B42E800E8055F /* Task.swift */; };
 		50ED0BAA225B8DA200224E92 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0BA9225B8DA200224E92 /* TaskViewController.swift */; };
+		50EDA29E225E044200AF2532 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDA29D225E044200AF2532 /* TaskTableViewCell.swift */; };
+		50EDA2A0225E05D400AF2532 /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDA29F225E05D400AF2532 /* CompletedTableViewCell.swift */; };
 		50F06A1B225DBABB008094FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F06A1A225DBABB008094FB /* MainViewController.swift */; };
 		50F06A1F225DBAE3008094FB /* CompletedTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F06A1E225DBAE3008094FB /* CompletedTaskViewController.swift */; };
 		50F06A21225DBE61008094FB /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F06A20225DBE61008094FB /* TaskListTableViewController.swift */; };
@@ -34,6 +36,8 @@
 		50E2FB90225B418000E8055F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50E2FB96225B42E800E8055F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		50ED0BA9225B8DA200224E92 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		50EDA29D225E044200AF2532 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		50EDA29F225E05D400AF2532 /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
 		50F06A1A225DBABB008094FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		50F06A1E225DBAE3008094FB /* CompletedTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTaskViewController.swift; sourceTree = "<group>"; };
 		50F06A20225DBE61008094FB /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
@@ -74,11 +78,13 @@
 				50E2FB81225B417D00E8055F /* AppDelegate.swift */,
 				50E2FB83225B417D00E8055F /* ViewController.swift */,
 				50A55290225CB477008B9BDF /* AddTaskDelegate.swift */,
+				50EDA29F225E05D400AF2532 /* CompletedTableViewCell.swift */,
 				50F06A22225DBEF2008094FB /* TaskDetailViewController.swift */,
 				50E2FB96225B42E800E8055F /* Task.swift */,
 				50E2FB85225B417D00E8055F /* Main.storyboard */,
 				50ED0BA9225B8DA200224E92 /* TaskViewController.swift */,
 				50F06A20225DBE61008094FB /* TaskListTableViewController.swift */,
+				50EDA29D225E044200AF2532 /* TaskTableViewCell.swift */,
 				50E2FB8B225B418000E8055F /* Assets.xcassets */,
 				50E2FB8D225B418000E8055F /* LaunchScreen.storyboard */,
 				50E2FB90225B418000E8055F /* Info.plist */,
@@ -161,10 +167,12 @@
 			files = (
 				50F06A21225DBE61008094FB /* TaskListTableViewController.swift in Sources */,
 				50F06A1B225DBABB008094FB /* MainViewController.swift in Sources */,
+				50EDA29E225E044200AF2532 /* TaskTableViewCell.swift in Sources */,
 				50E2FB97225B42E800E8055F /* Task.swift in Sources */,
 				50A55291225CB477008B9BDF /* AddTaskDelegate.swift in Sources */,
 				50F06A23225DBEF2008094FB /* TaskDetailViewController.swift in Sources */,
 				50E2FB84225B417D00E8055F /* ViewController.swift in Sources */,
+				50EDA2A0225E05D400AF2532 /* CompletedTableViewCell.swift in Sources */,
 				50ED0BAA225B8DA200224E92 /* TaskViewController.swift in Sources */,
 				50F06A1F225DBAE3008094FB /* CompletedTaskViewController.swift in Sources */,
 				50E2FB82225B417D00E8055F /* AppDelegate.swift in Sources */,
