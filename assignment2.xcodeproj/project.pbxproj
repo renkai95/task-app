@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50A55291225CB477008B9BDF /* AddTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A55290225CB477008B9BDF /* AddTaskDelegate.swift */; };
+		50DA322E225FC270007E964D /* MultiCastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA322D225FC270007E964D /* MultiCastDelegate.swift */; };
 		50E2FB82225B417D00E8055F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2FB81225B417D00E8055F /* AppDelegate.swift */; };
 		50E2FB84225B417D00E8055F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2FB83225B417D00E8055F /* ViewController.swift */; };
 		50E2FB87225B417D00E8055F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E2FB85225B417D00E8055F /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		50A55290225CB477008B9BDF /* AddTaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDelegate.swift; sourceTree = "<group>"; };
+		50DA322D225FC270007E964D /* MultiCastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCastDelegate.swift; sourceTree = "<group>"; };
 		50E2FB7E225B417D00E8055F /* assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E2FB81225B417D00E8055F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50E2FB83225B417D00E8055F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				50E5056E225F9810004B09E0 /* DatabaseProtocol.swift */,
 				50E50571225F99FC004B09E0 /* CoreDataController.swift */,
+				50DA322D225FC270007E964D /* MultiCastDelegate.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				50E2FB84225B417D00E8055F /* ViewController.swift in Sources */,
 				50EDA2A0225E05D400AF2532 /* CompletedTableViewCell.swift in Sources */,
 				50ED0BAA225B8DA200224E92 /* TaskViewController.swift in Sources */,
+				50DA322E225FC270007E964D /* MultiCastDelegate.swift in Sources */,
 				50F06A1F225DBAE3008094FB /* CompletedTaskViewController.swift in Sources */,
 				50E2FB82225B417D00E8055F /* AppDelegate.swift in Sources */,
 				50E50576225F9D59004B09E0 /* Task.swift in Sources */,

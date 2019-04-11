@@ -97,7 +97,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             return
         }
         tableView.deselectRow(at: indexPath, animated: true)
-        displayMessage(title:"Party Full",message:"Cannot add any more members to party")
+        displayMessage(title:"",message:"")
         return
     }
     

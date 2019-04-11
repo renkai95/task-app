@@ -10,6 +10,8 @@ import CoreData
 import UIKit
 
 class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabaseProtocol {
+
+
     var listeners=MulticastDelegate<DatabaseListener>()
     var persistantContainer:NSPersistentContainer
     var allTasksFetchedResultsController: NSFetchedResultsController<Tasks>?
@@ -45,6 +47,20 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         saveContext()
         return task
     }
+    func changeStatus(task: Tasks) {
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName:task.title!)
+        fetchRequest.predicate=NSPredicate(format: "title=%@")
+        do{
+            let test = try persistantContainer.viewContext.fetch(fetchRequest)
+                let update=test[0] as! NSManagedObject
+            if update.value(forKey: "duedate")as? String=="Not Completed"{
+                        update.setValue("Completed", forKey: "title")
+                                    }
+        }
+        catch{}
+        saveContext()
+    }
+    
     func deleteTask(task:Tasks){
         persistantContainer.viewContext.delete(task)
         saveContext()
@@ -72,6 +88,29 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
                 print("Fetch Request failed:\(error)")
             }
         }
-        var 
+        var tasks=[Tasks]()
+        return tasks
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if controller==allTasksFetchedResultsController{
+            listeners.invoke{(listener) in
+                if listener.ListenerType==ListenerType.tasks||listener.ListenerType==ListenerType.all
+                {listener.onTaskListChange(change:.update,tasks:fetchAllTasks())
+                    
+                }
+            }
+        }
+        
+    }
+    func createDefaultEntries(){
+        let _ = addTask(title: "FIT317", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "30-02-2019"))
+    }
+    func string2NSDate(date:String)->NSDate{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+    
+        let newDate = dateFormatter.date(from: date)
+        return newDate! as NSDate
     }
 }
