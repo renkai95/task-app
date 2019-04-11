@@ -12,10 +12,10 @@ import UIKit
 class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabaseProtocol {
     var listeners=MulticastDelegate<DatabaseListener>()
     var persistantContainer:NSPersistentContainer
-    var allHeroesFetchedResultsController: NSFetchedResultsController<Tasks>?
+    var allTasksFetchedResultsController: NSFetchedResultsController<Tasks>?
     
     override init(){
-        persistantContainer=NSPersistentContainer(name:Tasks)
+        persistantContainer=NSPersistentContainer(name:"Tasks")
         persistantContainer.loadPersistentStores(){
             (description,error) in
             if let error=error{
@@ -36,5 +36,42 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
             }
         }
     }
-    func add
+    func addTask(title:String,desc:String,status:String,duedate:NSDate)-> Tasks{
+        let task=NSEntityDescription.insertNewObject(forEntityName: "Tasks", into: persistantContainer.viewContext) as! Tasks
+        task.title=title
+        task.desc=desc
+        task.status=status
+        task.duedate=duedate
+        saveContext()
+        return task
+    }
+    func deleteTask(task:Tasks){
+        persistantContainer.viewContext.delete(task)
+        saveContext()
+    }
+    func addListener(listener:DatabaseListener){
+        listeners.addDelegate(listener)
+        if listener.ListenerType==ListenerType.tasks||listener.ListenerType==ListenerType.all{
+            listener.onTaskListChange(change: .update, tasks: fetchAllTasks())
+            
+        }
+    }
+    func removeListener(listener: DatabaseListener) {
+        listeners.removeDelegate(listener)
+    }
+    func fetchAllTasks()->[Tasks]{
+        if allTasksFetchedResultsController==nil{
+            let fetchRequest:NSFetchRequest<Tasks>=Tasks.fetchRequest()
+            let nameSortDescriptor=NSSortDescriptor(key:"title",ascending:true)
+            fetchRequest.sortDescriptors=[nameSortDescriptor]
+            allTasksFetchedResultsController=NSFetchedResultsController<Tasks>(fetchRequest: fetchRequest, managedObjectContext: persistantContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            allTasksFetchedResultsController?.delegate=self
+            do{
+                try allTasksFetchedResultsController?.performFetch()
+            }catch{
+                print("Fetch Request failed:\(error)")
+            }
+        }
+        var 
+    }
 }
