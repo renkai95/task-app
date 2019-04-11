@@ -17,6 +17,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     var filteredTasks: [Task]=[]
     weak var addTaskDelegate:AddTaskDelegate?
     
+    @IBOutlet weak var searchTask: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         createDefaultTasks()
@@ -59,12 +60,12 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             return 1
         }
         // #warning Incomplete implementation, return the number of rows
-        return 0
+       
     }
 
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titleCell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        //let titleCell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         if indexPath.section==SECTION_TASK{
             let titleCell=tableView.dequeueReusableCell(withIdentifier: CELL_TASK, for: indexPath) as! TaskTableViewCell
             let task=filteredTasks[indexPath.row]
@@ -83,13 +84,23 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section==SECTION_COUNT{
+            tableView.deselectRow(at: indexPath, animated: false)
+            return
+        }
         // Return false if you do not want the specified item to be editable.
-        return true
+        if addTaskDelegate!.addTask(newTask: filteredTasks[indexPath.row]){
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        displayMessage(title:"Party Full",message:"Cannot add any more members to party")
+        return
     }
-    */
+    
 
     /*
     // Override to support editing the table view.
@@ -118,19 +129,47 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="createTaskSegue"{
+            let destination = segue.destination as! TaskViewController
+            destination.addTaskDelegate=self
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    func addTask(newTask: Task) -> Bool {
+        allTasks.append(newTask)
+        filteredTasks.append(newTask)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row:filteredTasks.count-1,section:0)], with: .automatic)
+        tableView.endUpdates()
+        tableView.reloadSections([SECTION_COUNT], with: .automatic)
+        return true
+    }
+    func createDefaultTasks(){
+          allTasks.append(Task(name:"Assignment 2",description:"FIT3178",duedate:string2Date("2018-04-14"),completed:"Completed"))
+    }
+    func displayMessage(title:String,message:String){
+        let alertController=UIAlertController(title:title,message:message,preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title:"Dismiss",style:UIAlertAction.Style.default,handler:nil))
+        self.present(alertController,animated:true,completion: nil)
+    }
     func date2String(_ date: Date) -> String {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm" //yyyy
         return formatter.string(from: date)
+    }
+    func string2Date(_ dateStr:String)->Date{
+        let dateFmt = DateFormatter()
+        dateFmt.dateFormat =  "yyyy-MM-dd"
+        let date = dateFmt.date(from: dateStr)
+        
+        return date!
+        
     }
 }
