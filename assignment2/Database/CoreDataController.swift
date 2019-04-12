@@ -77,7 +77,7 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         listeners.removeDelegate(listener)
     }
     func fetchAllTasks()->[Tasks]{
-        print("yeet")
+        //print("yeet")
         if allTasksFetchedResultsController==nil{
             let fetchRequest:NSFetchRequest<Tasks>=Tasks.fetchRequest()
             let nameSortDescriptor=NSSortDescriptor(key:"title",ascending:true)

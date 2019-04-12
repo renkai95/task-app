@@ -70,7 +70,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let titleCell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        if indexPath.section==SECTION_TASK{
+        if indexPath.section==SECTION_TASK && filteredTasks[indexPath.row].status=="Not Completed"{
             let titleCell=tableView.dequeueReusableCell(withIdentifier: CELL_TASK, for: indexPath) as! TaskTableViewCell
             let task=filteredTasks[indexPath.row]
             titleCell.titleOutlet.text=task.title
@@ -81,10 +81,13 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             
         }
         // Configure the cell...
+        else if indexPath.section==SECTION_COUNT{
         let countCell=tableView.dequeueReusableCell(withIdentifier: CELL_COUNT, for: indexPath)
         countCell.textLabel?.text="\(allTasks.count) tasks in the database"
         countCell.selectionStyle = .none
         return countCell
+        }
+        return tableView.dequeueReusableCell(withIdentifier: CELL_COUNT, for: indexPath)
     }
     
 
