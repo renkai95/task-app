@@ -9,7 +9,9 @@
 import UIKit
 
 class TaskViewController: UIViewController  ,UITextFieldDelegate {
-    weak var addTaskDelegate:AddTaskDelegate?
+    //weak var addTaskDelegate:AddTaskDelegate?
+    weak var taskDelegate: AddTaskDelegate?
+    weak var databaseController:DatabaseProtocol?
     @IBOutlet weak var descOutlet: UITextField!
     @IBOutlet weak var dueOutlet: UIDatePicker!
     
@@ -18,7 +20,8 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
     @IBOutlet weak var titleOutlet: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let appDelegate=UIApplication.shared.delegate as! AppDelegate
+        databaseController=appDelegate.databaseController
         //Do any additional setup after loading the view.
         descOutlet.delegate = self
         
@@ -37,9 +40,9 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             let desc = descOutlet.text!
             let due=dueOutlet.date
             let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
-            
-            let newTask = Task(name: title, description: desc,duedate:due,completed:status)
-            let _ = addTaskDelegate?.addTask(newTask:newTask)
+
+            let _ = databaseController!.addTask(title: title, desc: desc,status: status, duedate: due as NSDate)
+            let _ = taskDelegate!.addTask(newTask:t)
             displayMessage(title:"Success!",message:"Task inserted successfully")
             navigationController?.popViewController(animated: true)
             return
