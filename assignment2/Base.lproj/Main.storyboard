@@ -240,17 +240,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="6RJ-Tf-y05">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="7NN-rs-Noc" id="hPf-Rn-ayE"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="124" id="5wm-2h-McO" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="111.5" width="375" height="124"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wm-2h-McO" id="Qzt-mV-azk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
@@ -299,7 +291,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCount" rowHeight="32" id="oTU-56-dqk" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="235.5" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="179.5" width="375" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTU-56-dqk" id="hbD-cA-GBL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="31.5"/>
@@ -323,14 +315,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="TLG-vP-0Sw" id="IYZ-A0-VdC"/>
-                        <outlet property="searchTask" destination="6RJ-Tf-y05" id="AST-4z-Ql8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYA-GW-eJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="TLG-vP-0Sw">
                     <connections>
                         <outlet property="delegate" destination="7NN-rs-Noc" id="pB2-FU-h4Z"/>
-                        <outlet property="searchBar" destination="6RJ-Tf-y05" id="YjM-mv-krd"/>
                         <outlet property="searchContentsController" destination="7NN-rs-Noc" id="Aoe-dn-DC5"/>
                         <outlet property="searchResultsDataSource" destination="7NN-rs-Noc" id="ADq-Gx-qLk"/>
                         <outlet property="searchResultsDelegate" destination="7NN-rs-Noc" id="8jx-bk-oZW"/>

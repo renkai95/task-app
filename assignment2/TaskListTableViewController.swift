@@ -8,24 +8,27 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController ,UISearchResultsUpdating,AddTaskDelegate{
+class TaskListTableViewController: UITableViewController ,UISearchResultsUpdating,AddTaskDelegate,DatabaseListener{
+
     let SECTION_TASK=0;
     let SECTION_COUNT=1;
     let CELL_TASK="titleCell"
     let CELL_COUNT="taskCount"
-    var allTasks: [Task]=[]
-    var filteredTasks: [Task]=[]
+    var allTasks: [Tasks]=[]
+    var filteredTasks: [Tasks]=[]
     weak var addTaskDelegate:AddTaskDelegate?
-    
+    weak var databaseController: DatabaseProtocol?
     @IBOutlet weak var searchTask: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDefaultTasks()
+        //createDefaultTasks()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         filteredTasks=allTasks
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController=appDelegate.databaseController
         let searchController = UISearchController(searchResultsController: nil);
         searchController.searchResultsUpdater=self
         searchController.obscuresBackgroundDuringPresentation=false
@@ -35,8 +38,8 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     }
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText=searchController.searchBar.text?.lowercased(),searchText.count>0{
-            filteredTasks=allTasks.filter({(task:Task)->Bool in
-                return task.name.lowercased().contains(searchText)
+            filteredTasks=allTasks.filter({(task:Tasks)->Bool in
+                return (task.title!.lowercased().contains(searchText))
             })
         }
         else{
@@ -69,10 +72,10 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         if indexPath.section==SECTION_TASK{
             let titleCell=tableView.dequeueReusableCell(withIdentifier: CELL_TASK, for: indexPath) as! TaskTableViewCell
             let task=filteredTasks[indexPath.row]
-            titleCell.titleOutlet.text=task.name
+            titleCell.titleOutlet.text=task.title
             titleCell.descOutlet.text=task.desc
             
-            titleCell.dueOutlet.text=date2String(task.duedate)
+            titleCell.dueOutlet.text=date2String(task.duedate!)
             return titleCell
             
         }
@@ -100,8 +103,16 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         displayMessage(title:"",message:"")
         return
     }
-    
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        
+    }
+    var listenerType=ListenerType.tasks
+    func onTaskListChange(change:DatabaseChange,tasks:[Tasks]){
+        allTasks=tasks
+        updateSearchResults(for: navigationItem.searchController!)
+    }
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -136,12 +147,12 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="createTaskSegue"{
             let destination = segue.destination as! TaskViewController
-            destination.addTaskDelegate=self
+            destination.taskDelegate=self
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    func addTask(newTask: Task) -> Bool {
+    func addTask(newTask: Tasks) -> Bool {
         allTasks.append(newTask)
         filteredTasks.append(newTask)
         tableView.beginUpdates()
@@ -150,26 +161,24 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         tableView.reloadSections([SECTION_COUNT], with: .automatic)
         return true
     }
-    func createDefaultTasks(){
-          allTasks.append(Task(name:"Assignment 2",description:"FIT3178",duedate:string2Date("2018-04-14"),completed:"Completed"))
-    }
+
     func displayMessage(title:String,message:String){
         let alertController=UIAlertController(title:title,message:message,preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title:"Dismiss",style:UIAlertAction.Style.default,handler:nil))
         self.present(alertController,animated:true,completion: nil)
     }
-    func date2String(_ date: Date) -> String {
+    func date2String(_ date: NSDate) -> String {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy HH:mm" //yyyy
-        return formatter.string(from: date)
+        return formatter.string(from: date as Date)
     }
-    func string2Date(_ dateStr:String)->Date{
+    func string2Date(_ dateStr:String)->NSDate{
         let dateFmt = DateFormatter()
         dateFmt.dateFormat =  "yyyy-MM-dd"
         let date = dateFmt.date(from: dateStr)
         
-        return date!
+        return date! as NSDate
         
     }
 }

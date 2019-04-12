@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AddTaskDelegate: AnyObject {
-    func addTask(newTask: Task) -> Bool
+    func addTask(newTask: Tasks) -> Bool
 }

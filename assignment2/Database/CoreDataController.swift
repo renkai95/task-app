@@ -67,10 +67,10 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
     }
     func addListener(listener:DatabaseListener){
         listeners.addDelegate(listener)
-        if listener.ListenerType==ListenerType.tasks||listener.ListenerType==ListenerType.all{
+
             listener.onTaskListChange(change: .update, tasks: fetchAllTasks())
             
-        }
+        
     }
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
@@ -94,7 +94,7 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if controller==allTasksFetchedResultsController{
             listeners.invoke{(listener) in
-                if listener.ListenerType==ListenerType.tasks||listener.ListenerType==ListenerType.all
+                if listener.listenerType==ListenerType.tasks||listener.listenerType==ListenerType.all
                 {listener.onTaskListChange(change:.update,tasks:fetchAllTasks())
                     
                 }

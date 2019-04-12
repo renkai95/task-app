@@ -19,7 +19,7 @@ enum ListenerType{
     case all
 }
 protocol DatabaseListener:AnyObject{
-    var ListenerType:ListenerType{ get set}
+    var listenerType:ListenerType{get set}
     func onTaskListChange(change:DatabaseChange,tasks:[Tasks])
 }
 protocol DatabaseProtocol: AnyObject{

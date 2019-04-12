@@ -40,9 +40,9 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             let desc = descOutlet.text!
             let due=dueOutlet.date
             let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
-
+    
             let _ = databaseController!.addTask(title: title, desc: desc,status: status, duedate: due as NSDate)
-            let _ = taskDelegate!.addTask(newTask:t)
+            //let _ = taskDelegate!.addTask(newTask:)
             displayMessage(title:"Success!",message:"Task inserted successfully")
             navigationController?.popViewController(animated: true)
             return
