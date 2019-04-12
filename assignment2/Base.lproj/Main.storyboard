@@ -135,7 +135,7 @@
         <!--Task details-->
         <scene sceneID="18E-VK-EAB">
             <objects>
-                <viewController title="Task details" id="h0X-46-WGv" sceneMemberID="viewController">
+                <viewController title="Task details" id="h0X-46-WGv" customClass="TaskDetailViewController" customModule="assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aWF-rt-8Op">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,6 +172,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="u1Q-7q-aZ1"/>
                     </view>
+                    <connections>
+                        <outlet property="descOutlet" destination="i8Z-gq-hfh" id="MmH-vG-8x7"/>
+                        <outlet property="dueOutlet" destination="vLv-AG-Xtc" id="M0d-PV-3On"/>
+                        <outlet property="statusOutlet" destination="gyC-EA-kvS" id="9TG-7g-ZC0"/>
+                        <outlet property="titleOutlet" destination="l7D-EZ-8Nh" id="IKJ-Is-vPR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5Y-KX-h68" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

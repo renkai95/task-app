@@ -9,7 +9,7 @@
 import UIKit
 
 class TaskListTableViewController: UITableViewController ,UISearchResultsUpdating,DatabaseListener{
-
+    var value:Tasks!
     let SECTION_TASK=0;
     let SECTION_COUNT=1;
     let CELL_TASK="titleCell"
@@ -96,12 +96,8 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             return
         }
         // Return false if you do not want the specified item to be editable.
-        if addTaskDelegate!.addTask(newTask: filteredTasks[indexPath.row]){
-            navigationController?.popViewController(animated: true)
-            return
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
-        displayMessage(title:"",message:"")
+        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+        performSegue(withIdentifier: "taskDetailSegue", sender: self)
         return
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -150,16 +146,19 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="createTaskSegue"{
-            let destination = segue.destination as! TaskViewController
-            destination.taskDelegate=self
+    
+     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "taskDetailSegue") {
+            // initialize new view controller and cast it as your view controller
+            let viewController = segue.destination as! TaskDetailViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue = value
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
+    /*
     func addTask(newTask: Tasks) -> Bool {
         allTasks.append(newTask)
         filteredTasks.append(newTask)
