@@ -288,6 +288,7 @@
                                     <outlet property="descOutlet" destination="cOL-Gb-Rsx" id="Cji-83-QYv"/>
                                     <outlet property="dueOutlet" destination="fLb-9W-n29" id="zp6-NW-oNT"/>
                                     <outlet property="titleOutlet" destination="wlc-5H-BjN" id="NGI-Dn-F7j"/>
+                                    <segue destination="h0X-46-WGv" kind="show" identifier="taskDetailSegue" id="3fS-16-VSY"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCount" rowHeight="32" id="oTU-56-dqk" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">

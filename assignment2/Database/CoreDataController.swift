@@ -109,7 +109,7 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         
     }
     func createDefaultEntries(){
-        let _ = addTask(title: "FIT3178", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "2017-Jan-01 12:00:00.250"))
+        //let _ = addTask(title: "FIT3178", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "2017-Jan-01 12:00:00.250"))
         print("default task added")
     }
     func string2NSDate(date:String)->NSDate!{
