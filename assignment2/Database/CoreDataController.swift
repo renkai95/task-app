@@ -105,12 +105,14 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
     func createDefaultEntries(){
         let _ = addTask(title: "FIT317", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "30-02-2019"))
     }
-    func string2NSDate(date:String)->NSDate{
+    func string2NSDate(date:String)->NSDate!{
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
     
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone
         let newDate = dateFormatter.date(from: date)
-        return newDate! as NSDate
+        return newDate as? NSDate
     }
 }
