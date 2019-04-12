@@ -44,6 +44,7 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         task.desc=desc
         task.status=status
         task.duedate=duedate
+        print("yote")
         saveContext()
         return task
     }
@@ -67,15 +68,16 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
     }
     func addListener(listener:DatabaseListener){
         listeners.addDelegate(listener)
-
+        if listener.listenerType==ListenerType.tasks||listener.listenerType==ListenerType.all{
             listener.onTaskListChange(change: .update, tasks: fetchAllTasks())
             
-        
+        }
     }
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
     }
     func fetchAllTasks()->[Tasks]{
+        print("yeet")
         if allTasksFetchedResultsController==nil{
             let fetchRequest:NSFetchRequest<Tasks>=Tasks.fetchRequest()
             let nameSortDescriptor=NSSortDescriptor(key:"title",ascending:true)
@@ -89,6 +91,10 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
             }
         }
         var tasks=[Tasks]()
+        if allTasksFetchedResultsController?.fetchedObjects != nil {
+            tasks = (allTasksFetchedResultsController?.fetchedObjects)!
+        }
+        
         return tasks
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -103,7 +109,8 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         
     }
     func createDefaultEntries(){
-        let _ = addTask(title: "FIT317", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "2017-Jan-01 12:00:00.250"))
+        let _ = addTask(title: "FIT3178", desc: "Assignment 2", status: "Not Completed", duedate: string2NSDate(date: "2017-Jan-01 12:00:00.250"))
+        print("default task added")
     }
     func string2NSDate(date:String)->NSDate!{
         var inDate = date

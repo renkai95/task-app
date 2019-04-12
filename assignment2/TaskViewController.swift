@@ -10,7 +10,6 @@ import UIKit
 
 class TaskViewController: UIViewController  ,UITextFieldDelegate {
     //weak var addTaskDelegate:AddTaskDelegate?
-    weak var taskDelegate: AddTaskDelegate?
     weak var databaseController:DatabaseProtocol?
     @IBOutlet weak var descOutlet: UITextField!
     @IBOutlet weak var dueOutlet: UIDatePicker!

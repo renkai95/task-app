@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController ,UISearchResultsUpdating,AddTaskDelegate,DatabaseListener{
+class TaskListTableViewController: UITableViewController ,UISearchResultsUpdating,DatabaseListener{
 
     let SECTION_TASK=0;
     let SECTION_COUNT=1;
@@ -16,9 +16,10 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     let CELL_COUNT="taskCount"
     var allTasks: [Tasks]=[]
     var filteredTasks: [Tasks]=[]
+    var listenerType=ListenerType.tasks
     weak var addTaskDelegate:AddTaskDelegate?
     weak var databaseController: DatabaseProtocol?
-    @IBOutlet weak var searchTask: UISearchBar!
+    //@IBOutlet weak var searchTask: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         //createDefaultTasks()
@@ -65,7 +66,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         // #warning Incomplete implementation, return the number of rows
        
     }
-
+    
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let titleCell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -108,11 +109,16 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         databaseController?.addListener(listener: self)
         
     }
-    var listenerType=ListenerType.tasks
+
     func onTaskListChange(change:DatabaseChange,tasks:[Tasks]){
         allTasks=tasks
         updateSearchResults(for: navigationItem.searchController!)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -144,6 +150,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="createTaskSegue"{
             let destination = segue.destination as! TaskViewController
@@ -152,6 +159,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
+    
     func addTask(newTask: Tasks) -> Bool {
         allTasks.append(newTask)
         filteredTasks.append(newTask)
@@ -161,12 +169,14 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
         tableView.reloadSections([SECTION_COUNT], with: .automatic)
         return true
     }
+ */
 
     func displayMessage(title:String,message:String){
         let alertController=UIAlertController(title:title,message:message,preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title:"Dismiss",style:UIAlertAction.Style.default,handler:nil))
         self.present(alertController,animated:true,completion: nil)
     }
+ 
     func date2String(_ date: NSDate) -> String {
         
         let formatter = DateFormatter()
