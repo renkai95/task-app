@@ -96,7 +96,10 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             return
         }
         // Return false if you do not want the specified item to be editable.
-        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+
+        let task=filteredTasks[indexPath.row]
+        print(task.title)
+        value=task
         performSegue(withIdentifier: "taskDetailSegue", sender: self)
         return
     }
@@ -147,12 +150,13 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         if (segue.identifier == "taskDetailSegue") {
             // initialize new view controller and cast it as your view controller
             let viewController = segue.destination as! TaskDetailViewController
             // your new view controller should have property that will store passed value
+            //print(value.title!)
             viewController.passedValue = value
         }
         // Get the new view controller using segue.destination.

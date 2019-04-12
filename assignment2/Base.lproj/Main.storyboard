@@ -140,38 +140,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-EZ-8Nh">
-                                <rect key="frame" x="51" y="98" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-EZ-8Nh">
+                                <rect key="frame" x="16" y="36" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLv-AG-Xtc">
-                                <rect key="frame" x="51" y="204" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLv-AG-Xtc">
+                                <rect key="frame" x="16" y="110" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyC-EA-kvS">
-                                <rect key="frame" x="51" y="260" width="54" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyC-EA-kvS">
+                                <rect key="frame" x="16" y="147" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8Z-gq-hfh">
-                                <rect key="frame" x="51" y="150" width="93" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8Z-gq-hfh">
+                                <rect key="frame" x="16" y="73" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vLv-AG-Xtc" firstAttribute="top" secondItem="i8Z-gq-hfh" secondAttribute="bottom" constant="16" id="1OO-Gy-kHY"/>
+                            <constraint firstItem="u1Q-7q-aZ1" firstAttribute="trailing" secondItem="vLv-AG-Xtc" secondAttribute="trailing" constant="16" id="Bf5-Rf-KB3"/>
+                            <constraint firstItem="l7D-EZ-8Nh" firstAttribute="top" secondItem="u1Q-7q-aZ1" secondAttribute="top" constant="16" id="H6x-n5-hgt"/>
+                            <constraint firstItem="u1Q-7q-aZ1" firstAttribute="trailing" secondItem="l7D-EZ-8Nh" secondAttribute="trailing" constant="16" id="HsE-1C-Zde"/>
+                            <constraint firstItem="u1Q-7q-aZ1" firstAttribute="trailing" secondItem="i8Z-gq-hfh" secondAttribute="trailing" constant="16" id="QXM-og-96X"/>
+                            <constraint firstItem="l7D-EZ-8Nh" firstAttribute="leading" secondItem="u1Q-7q-aZ1" secondAttribute="leading" constant="16" id="RuQ-59-sPa"/>
+                            <constraint firstItem="i8Z-gq-hfh" firstAttribute="leading" secondItem="u1Q-7q-aZ1" secondAttribute="leading" constant="16" id="elD-8b-Yev"/>
+                            <constraint firstItem="u1Q-7q-aZ1" firstAttribute="trailing" secondItem="gyC-EA-kvS" secondAttribute="trailing" constant="16" id="g8X-Ma-Mmv"/>
+                            <constraint firstItem="vLv-AG-Xtc" firstAttribute="leading" secondItem="u1Q-7q-aZ1" secondAttribute="leading" constant="16" id="mcP-Tl-pc4"/>
+                            <constraint firstItem="gyC-EA-kvS" firstAttribute="top" secondItem="vLv-AG-Xtc" secondAttribute="bottom" constant="16" id="pWj-Vw-DGG"/>
+                            <constraint firstItem="i8Z-gq-hfh" firstAttribute="top" secondItem="l7D-EZ-8Nh" secondAttribute="bottom" constant="16" id="u9W-ri-0VT"/>
+                            <constraint firstItem="gyC-EA-kvS" firstAttribute="leading" secondItem="u1Q-7q-aZ1" secondAttribute="leading" constant="16" id="yMB-0I-1am"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="u1Q-7q-aZ1"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Edit" id="7r8-4H-qov">
+                            <connections>
+                                <segue destination="PQG-cO-kN1" kind="show" identifier="editTaskSegue" id="kub-xp-EsV"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descOutlet" destination="i8Z-gq-hfh" id="MmH-vG-8x7"/>
                         <outlet property="dueOutlet" destination="vLv-AG-Xtc" id="M0d-PV-3On"/>
@@ -181,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5Y-KX-h68" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4876" y="684"/>
+            <point key="canvasLocation" x="4852" y="737"/>
         </scene>
         <!--Main Screen-->
         <scene sceneID="DYp-y9-9h6">
@@ -294,7 +312,6 @@
                                     <outlet property="descOutlet" destination="cOL-Gb-Rsx" id="Cji-83-QYv"/>
                                     <outlet property="dueOutlet" destination="fLb-9W-n29" id="zp6-NW-oNT"/>
                                     <outlet property="titleOutlet" destination="wlc-5H-BjN" id="NGI-Dn-F7j"/>
-                                    <segue destination="h0X-46-WGv" kind="show" identifier="taskDetailSegue" id="3fS-16-VSY"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCount" rowHeight="32" id="oTU-56-dqk" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
@@ -322,6 +339,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="TLG-vP-0Sw" id="IYZ-A0-VdC"/>
+                        <segue destination="h0X-46-WGv" kind="show" identifier="taskDetailSegue" id="LFi-6C-qhe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYA-GW-eJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,12 +457,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAK-SR-YQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4709.6000000000004" y="1333.5832083958021"/>
+            <point key="canvasLocation" x="4674" y="1402"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qd3-rh-bMw"/>
         <segue reference="0SM-JI-rqw"/>
-        <segue reference="LHa-8Z-CkI"/>
+        <segue reference="kub-xp-EsV"/>
     </inferredMetricsTieBreakers>
 </document>

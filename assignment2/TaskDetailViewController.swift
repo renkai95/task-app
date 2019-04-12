@@ -9,7 +9,7 @@
 import UIKit
 
 class TaskDetailViewController: UIViewController {
-    var passedValue:Tasks!
+    var passedValue:Tasks?
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var descOutlet: UILabel!
     @IBOutlet weak var dueOutlet: UILabel!
@@ -18,10 +18,10 @@ class TaskDetailViewController: UIViewController {
         super.viewDidLoad()
         if passedValue != nil{
             print("nope")
-            titleOutlet.text=passedValue.title
-            descOutlet.text=passedValue.desc
-            dueOutlet.text=date2String(passedValue.duedate!)
-            statusOutlet.text=passedValue.status
+            titleOutlet.text=passedValue?.title
+            descOutlet.text=passedValue?.desc
+            dueOutlet.text=date2String((passedValue?.duedate!)!)
+            statusOutlet.text=passedValue?.status
         }
         // Do any additional setup after loading the view.
     }
