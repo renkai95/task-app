@@ -10,6 +10,9 @@ import UIKit
 
 class CompletedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var dueOutlet: UILabel!
+    @IBOutlet weak var descOutlet: UILabel!
+    @IBOutlet weak var titleOutlet: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -70,7 +70,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let titleCell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        if indexPath.section==SECTION_TASK && filteredTasks[indexPath.row].status=="Not Completed"{
+        if indexPath.section==SECTION_TASK{
             let titleCell=tableView.dequeueReusableCell(withIdentifier: CELL_TASK, for: indexPath) as! TaskTableViewCell
             let task=filteredTasks[indexPath.row]
             titleCell.titleOutlet.text=task.title
@@ -113,7 +113,9 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
     }
 
     func onTaskListChange(change:DatabaseChange,tasks:[Tasks]){
-        allTasks=tasks
+        allTasks=tasks.filter({(task:Tasks)->Bool in
+            return (task.status=="Not Completed")
+        })
         updateSearchResults(for: navigationItem.searchController!)
     }
     override func viewWillDisappear(_ animated: Bool) {

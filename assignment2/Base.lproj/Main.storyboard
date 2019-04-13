@@ -381,10 +381,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="66" id="CSz-59-Tn4" customClass="CompletedTableViewCell" customModule="assignment2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedCell" rowHeight="66" id="CSz-59-Tn4" customClass="CompletedTableViewCell" customModule="assignment2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSz-59-Tn4" id="vms-MX-t7c">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSz-59-Tn4" id="vms-MX-t7c" customClass="CompletedTableViewCell" customModule="assignment2" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -411,42 +411,19 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descOutlet" destination="8hu-dW-cBF" id="UmP-X7-V37"/>
+                                    <outlet property="dueOutlet" destination="p8c-Oa-qzX" id="EON-TZ-j3L"/>
+                                    <outlet property="titleOutlet" destination="K08-AV-g6d" id="DDm-9z-ts0"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" rowHeight="67" id="P1B-5n-kab" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="121.5" width="375" height="67"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCount" rowHeight="37" id="P1B-5n-kab" customClass="TaskTableViewCell" customModule="assignment2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="121.5" width="375" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1B-5n-kab" id="ISX-bJ-bU2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cav-JD-brP">
-                                            <rect key="frame" x="16" y="0.0" width="38" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5y-Ea-mrv">
-                                            <rect key="frame" x="16" y="22" width="93" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-LA-Nf5">
-                                            <rect key="frame" x="16" y="45" width="76" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="descOutlet" destination="Z5y-Ea-mrv" id="ffA-Nm-TMz"/>
-                                    <outlet property="dueOutlet" destination="SVf-LA-Nf5" id="tVo-VF-hIQ"/>
-                                    <outlet property="titleOutlet" destination="cav-JD-brP" id="AZe-b8-4qF"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -457,10 +434,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAK-SR-YQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4674" y="1402"/>
+            <point key="canvasLocation" x="4672.8000000000002" y="1401.9490254872564"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="LFi-6C-qhe"/>
         <segue reference="qd3-rh-bMw"/>
         <segue reference="0SM-JI-rqw"/>
         <segue reference="kub-xp-EsV"/>
