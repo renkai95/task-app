@@ -77,6 +77,10 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             titleCell.descOutlet.text=task.desc
             
             titleCell.dueOutlet.text=date2String(task.duedate!)
+            if !(task.duedate as! Date > Date()) {
+                titleCell.titleOutlet.text = titleCell.titleOutlet.text!+"(OVERDUE!)"
+                titleCell.titleOutlet.textColor = .red
+            }
             return titleCell
             
         }
