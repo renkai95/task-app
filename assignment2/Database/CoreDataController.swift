@@ -66,6 +66,17 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
         persistantContainer.viewContext.delete(task)
         saveContext()
     }
+    func editTask(task:Tasks){
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName:task.title!)
+        do{
+            let test = try persistantContainer.viewContext.fetch(fetchRequest)
+            let update=test[0] as! NSManagedObject
+            if update.value(forKey: "duedate")as? String=="Not Completed"{
+                update.setValue("Completed", forKey: "title")
+            }
+        }
+        catch{}
+    }
     func addListener(listener:DatabaseListener){
         listeners.addDelegate(listener)
         if listener.listenerType==ListenerType.tasks||listener.listenerType==ListenerType.all{

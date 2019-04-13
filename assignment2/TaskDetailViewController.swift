@@ -33,7 +33,10 @@ class TaskDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "editTaskSegue"{
+            let viewController = segue.destination as! TaskViewController
+            viewController.passedValue=passedValue
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

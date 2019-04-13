@@ -10,6 +10,7 @@ import UIKit
 
 class TaskViewController: UIViewController  ,UITextFieldDelegate {
     //weak var addTaskDelegate:AddTaskDelegate?
+    var passedValue:Tasks?
     weak var databaseController:DatabaseProtocol?
     @IBOutlet weak var descOutlet: UITextField!
     @IBOutlet weak var dueOutlet: UIDatePicker!
@@ -22,9 +23,16 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         let appDelegate=UIApplication.shared.delegate as! AppDelegate
         databaseController=appDelegate.databaseController
         //Do any additional setup after loading the view.
-        descOutlet.delegate = self
+        //print(passedValue)
+        if (passedValue != nil) {
+            //print("init")
+            
+            titleOutlet.text=passedValue?.title
+            titleOutlet.isUserInteractionEnabled = false 
+            descOutlet.text=passedValue?.desc
+            dueOutlet.date=passedValue?.duedate! as! Date
         
-        descOutlet.delegate=self
+        }
 
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -33,7 +41,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
     }
 
     @IBAction func createTask(_ sender: Any) {
-        if titleOutlet.text != "" && descOutlet.text != ""
+        if titleOutlet.text != "" && descOutlet.text != "" && passedValue==nil
         {
             let title = titleOutlet.text!
             let desc = descOutlet.text!
@@ -46,7 +54,9 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             navigationController?.popViewController(animated: true)
             return
         }
-        
+        else if titleOutlet.text != "" && descOutlet.text != "" && passedValue != nil{
+            
+        }
         var errorMsg = "Please ensure all fields are filled:\n"
         
         if titleOutlet.text == "" {
