@@ -28,7 +28,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             //print("init")
             
             titleOutlet.text=passedValue?.title
-            titleOutlet.isUserInteractionEnabled = false 
+            titleOutlet.isUserInteractionEnabled = false
             descOutlet.text=passedValue?.desc
             dueOutlet.date=passedValue?.duedate! as! Date
         
@@ -55,6 +55,16 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             return
         }
         else if titleOutlet.text != "" && descOutlet.text != "" && passedValue != nil{
+            let title = titleOutlet.text!
+            let desc = descOutlet.text!
+            let due=dueOutlet.date
+            let status = segOutlet.titleForSegment(at:segOutlet.selectedSegmentIndex)!
+            
+            let _ = databaseController!.editTask(task: Task(name: title, description: desc,duedate: due as NSDate, completed: status))
+            //let _ = taskDelegate!.addTask(newTask:)
+            displayMessage(title:"Success!",message:"Task updated successfully")
+            navigationController?.popViewController(animated: true)
+            return
             
         }
         var errorMsg = "Please ensure all fields are filled:\n"

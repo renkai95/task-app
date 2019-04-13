@@ -63,19 +63,26 @@ class CoreDataController: NSObject,NSFetchedResultsControllerDelegate,DatabasePr
     }
     
     func deleteTask(task:Tasks){
+        print("delete")
+        
         persistantContainer.viewContext.delete(task)
         saveContext()
     }
-    func editTask(task:Tasks){
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName:task.title!)
+    func editTask(task:Task){
+        
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName:"Tasks")
+           fetchRequest.predicate=NSPredicate(format: "title=%@",task.name)
         do{
-            let test = try persistantContainer.viewContext.fetch(fetchRequest)
+            let test = try persistantContainer.viewContext.fetch(fetchRequest) as! [Tasks]
             let update=test[0] as! NSManagedObject
-            if update.value(forKey: "duedate")as? String=="Not Completed"{
-                update.setValue("Completed", forKey: "title")
-            }
+            update.setValue(task.desc,forKey:"desc")
+            update.setValue(task.duedate, forKey: "duedate")
+            update.setValue(task.completed, forKey: "status")
+
         }
-        catch{}
+        catch{
+            print("cannot update")
+        }
     }
     func addListener(listener:DatabaseListener){
         listeners.addDelegate(listener)

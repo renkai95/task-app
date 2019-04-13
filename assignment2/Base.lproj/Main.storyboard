@@ -175,6 +175,7 @@
                                 <rect key="frame" x="16" y="238" width="343" height="30"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
+                                    <action selector="deleteTask:" destination="h0X-46-WGv" eventType="touchUpInside" id="wGs-1v-XTP"/>
                                     <segue destination="7NN-rs-Noc" kind="show" identifier="deleteTaskSegue" id="pGP-Js-x5C"/>
                                 </connections>
                             </button>
@@ -470,9 +471,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qd3-rh-bMw"/>
+        <segue reference="pGP-Js-x5C"/>
         <segue reference="0SM-JI-rqw"/>
-        <segue reference="LFi-6C-qhe"/>
+        <segue reference="gCn-wV-pi3"/>
         <segue reference="bNL-g3-3wa"/>
     </inferredMetricsTieBreakers>
 </document>

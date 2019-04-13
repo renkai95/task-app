@@ -28,4 +28,5 @@ protocol DatabaseProtocol: AnyObject{
     func deleteTask(task:Tasks)
     func addListener(listener:DatabaseListener)
     func removeListener(listener:DatabaseListener)
+    func editTask(task:Task)
 }

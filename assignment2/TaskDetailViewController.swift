@@ -8,14 +8,19 @@
 
 import UIKit
 
-class TaskDetailViewController: UIViewController {
+class TaskDetailViewController: UIViewController{
+
+    
     var passedValue:Tasks?
+    weak var databaseController:DatabaseProtocol?
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var descOutlet: UILabel!
     @IBOutlet weak var dueOutlet: UILabel!
     @IBOutlet weak var statusOutlet: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController=appDelegate.databaseController
         if passedValue != nil{
             print("nope")
             titleOutlet.text=passedValue?.title
@@ -27,6 +32,11 @@ class TaskDetailViewController: UIViewController {
     }
     
 
+    @IBAction func deleteTask(_ sender: Any) {
+    
+        let _ = databaseController!.deleteTask(task: passedValue!)
+        //performSegue(withIdentifier: "deleteTaskSegue", sender: self)
+    }
     
     // MARK: - Navigation
 
@@ -36,6 +46,9 @@ class TaskDetailViewController: UIViewController {
         if segue.identifier == "editTaskSegue"{
             let viewController = segue.destination as! TaskViewController
             viewController.passedValue=passedValue
+        }
+        if segue.identifier=="deleteTaskSegue"{
+            //let _ = databaseController?.deleteTask(task: passedValue!)
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
