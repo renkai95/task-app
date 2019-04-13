@@ -101,7 +101,7 @@ class CompletedTaskViewController: UITableViewController ,UISearchResultsUpdatin
     // Return false if you do not want the specified item to be editable.
     
     let task=filteredTasks[indexPath.row]
-    print(task.title)
+        print(task.title!)
     value=task
     performSegue(withIdentifier: "taskDetailSegue", sender: self)
     return
@@ -161,7 +161,7 @@ class CompletedTaskViewController: UITableViewController ,UISearchResultsUpdatin
     // initialize new view controller and cast it as your view controller
     let viewController = segue.destination as! TaskDetailViewController
     // your new view controller should have property that will store passed value
-    //print(value.title!)
+    print(value.title!)
     viewController.passedValue = value
     }
     // Get the new view controller using segue.destination.
