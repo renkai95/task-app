@@ -100,5 +100,8 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        titleOutlet.resignFirstResponder()
+        descOutlet.resignFirstResponder()
+    }
 }
