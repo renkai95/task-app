@@ -20,10 +20,13 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
     @IBOutlet weak var titleOutlet: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.descOutlet.delegate=self
+        self.titleOutlet.delegate=self
         let appDelegate=UIApplication.shared.delegate as! AppDelegate
         databaseController=appDelegate.databaseController
         //Do any additional setup after loading the view.
         //print(passedValue)
+        
         if (passedValue != nil) {
             //print("init")
             
@@ -104,4 +107,9 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
         titleOutlet.resignFirstResponder()
         descOutlet.resignFirstResponder()
     }
+    func textFieldShouldReturn(userText: UITextField!)-> Bool{
+        userText.resignFirstResponder()
+        return true
+    }
+    
 }
