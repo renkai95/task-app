@@ -81,6 +81,9 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
                 titleCell.titleOutlet.text = titleCell.titleOutlet.text!+"(OVERDUE!)"
                 titleCell.titleOutlet.textColor = .red
             }
+            else{
+                titleCell.titleOutlet.textColor = .black
+            }
             return titleCell
             
         }

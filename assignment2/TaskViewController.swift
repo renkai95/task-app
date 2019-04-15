@@ -54,7 +54,7 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             navigationController?.popViewController(animated: true)
             return
         }
-        else if titleOutlet.text != "" && descOutlet.text != "" && passedValue != nil{
+        else if titleOutlet.text != "" && descOutlet.text != "" && passedValue != nil && dueOutlet.date>Date(){
             let title = titleOutlet.text!
             let desc = descOutlet.text!
             let due=dueOutlet.date
@@ -67,8 +67,10 @@ class TaskViewController: UIViewController  ,UITextFieldDelegate {
             return
             
         }
-        var errorMsg = "Please ensure all fields are filled:\n"
-        
+        var errorMsg = "Please ensure all fields are entered correctly:\n"
+        if !(dueOutlet.date > Date()) {
+            errorMsg+="- Your new task is long overdue\n"
+        }
         if titleOutlet.text == "" {
             errorMsg += "- Must provide a title\n"
         }
