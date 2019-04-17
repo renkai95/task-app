@@ -5,6 +5,8 @@
 //  Created by rk on 10/4/19.
 //  Copyright © 2019 Monash University. All rights reserved.
 //
+//This view controller handles All the completed tasks. This class takes in the whole Task entity and filters based on the "status" attribute on runtime.
+// 
 
 import UIKit
 
