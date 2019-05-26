@@ -84,6 +84,7 @@ class TaskListTableViewController: UITableViewController ,UISearchResultsUpdatin
             else{
                 titleCell.titleOutlet.textColor = .black
             }
+            
             return titleCell
             
         }
